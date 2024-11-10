@@ -1,7 +1,18 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native"; 
+
 export default function Screen3({ route }) {
+  const navigation = useNavigation(); 
   return (
     <View style={styles.container}>
+  
+      <Pressable
+        style={styles.backButton}
+        onPress={() => navigation.navigate("Screen2")} 
+      >
+        <Text style={styles.backText}>Back</Text>
+      </Pressable>
+
       <View
         style={{
           width: 358,
@@ -18,12 +29,9 @@ export default function Screen3({ route }) {
           style={{ width: 297, height: 340 }}
         />
       </View>
-      <View
-        style={{ width: "100%", height: 300, justifyContent: "space-around" }}
-      >
-        <Text
-          style={{ fontSize: 35, fontWeight: "400", fontFamily: "Voltaire" }}
-        >
+
+      <View style={{ width: "100%", height: 300, justifyContent: "space-around" }}>
+        <Text style={{ fontSize: 35, fontWeight: "400", fontFamily: "Voltaire" }}>
           {route.params?.name}
         </Text>
         <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
@@ -49,9 +57,7 @@ export default function Screen3({ route }) {
             {route.params?.price} $
           </Text>
         </View>
-        <Text
-          style={{ fontSize: 25, fontWeight: "400", fontFamily: "Voltaire" }}
-        >
+        <Text style={{ fontSize: 25, fontWeight: "400", fontFamily: "Voltaire" }}>
           Description
         </Text>
         <Text
@@ -65,6 +71,7 @@ export default function Screen3({ route }) {
           {route.params?.Description}
         </Text>
       </View>
+
       <View
         style={{
           width: "100%",
@@ -95,7 +102,7 @@ export default function Screen3({ route }) {
               fontFamily: "Voltaire",
             }}
           >
-            Add to card
+            Thêm vào giỏ hàng
           </Text>
         </Pressable>
       </View>
@@ -111,5 +118,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     padding: 10,
+  },
+  backButton: {
+    position: "absolute",
+    top: 20,
+    left: 20,
+    padding: 10,
+    backgroundColor: "#ccc",
+    borderRadius: 5,
+  },
+  backText: {
+    fontSize: 18,
+    color: "#333",
   },
 });
