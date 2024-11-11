@@ -5,13 +5,18 @@ export default function Screen3({ route }) {
   const navigation = useNavigation(); 
   return (
     <View style={styles.container}>
-  
-      <Pressable
-        style={styles.backButton}
-        onPress={() => navigation.navigate("Screen2")} 
-      >
-        <Text style={styles.backText}>Back</Text>
-      </Pressable>
+      
+
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={{ paddingRight: 20 }}
+        >
+          <Image
+            source={require("../assets/arrowback.png")}
+            style={{ width: 22, height: 22 }}
+          />
+        </Pressable>
+   
 
       <View
         style={{
